@@ -42,4 +42,4 @@ export const GlobalStyles = createGlobalStyle`
     outline: transparent;
     box-shadow: 0 0 0 2px ${({ theme }) => theme["gray-500"]};
   }
-`
+`;
