@@ -5,6 +5,7 @@ export const HistoryContainer = styled.div`
   display: grid;
   align-items: start;
   gap: 2rem;
+  width: 100%;
 `;
 
 export const ContainerTable = styled.div`
@@ -43,7 +44,7 @@ const STATUS_COLOR = {
 };
 
 interface StatusProp  {
-  statusColor: "yellow" | "green" | "red";
+  $statuscolor: "yellow" | "green" | "red";
 }
 
 export const Status = styled.span<StatusProp>`
@@ -56,8 +57,8 @@ export const Status = styled.span<StatusProp>`
     content: "";
     width: 8px;
     height: 8px;
-    background-color: ${({theme,statusColor}) =>
-      theme[STATUS_COLOR[statusColor]]};
+    background-color: ${({theme, $statuscolor}) =>
+      theme[STATUS_COLOR[$statuscolor]]};
     border-radius: 50px;
   }
 `;
