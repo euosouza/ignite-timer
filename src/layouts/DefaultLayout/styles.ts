@@ -5,19 +5,22 @@ export const LayoutContainer = styled.div`
   padding: 2rem;
 
   background-color: ${({ theme }) => theme["gray-700"]};
-  height: 100%;
-  max-height: 500px;
   overflow: auto;
   border-radius: 8px;
+  height: 100%;
+  max-height: 500px;
 
-  display: grid;
+  display: flex;
+  flex-direction: column;
   align-items: start;
-  gap: 2rem;
+  gap: 4rem;
 `;
 
 export const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: 800px;
   height: 100vh;
   overflow: auto;
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
 `;

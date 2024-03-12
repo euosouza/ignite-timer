@@ -4,6 +4,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-height: max-content;
+  width: 100%;
 
   ul {
     display: flex;
