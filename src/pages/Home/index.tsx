@@ -1,38 +1,72 @@
-import { HomeContainer, GroupForm, Separator, CouterTimer } from "./styles";
+import { useContext } from "react";
+
+import {
+  HomeContainer, GroupForm,
+  StarButtom, StopButtom
+} from "./styles";
+import { Countdown } from "./components/Countdown";
+import { NewCycleForm } from "./components/NewCycleForm";
+import * as zod from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+import { CyclesContext } from "../../context/CyclesContext";
+
+const newCycleFormSchema = zod.object({
+  task: zod.string().min(1, "Informe a tarefa"),
+  minutesAmount: zod.number().min(1).max(60),
+});
+
+export type NewCycleFormData = zod.infer<typeof newCycleFormSchema>
 
 export function Home() {
-  return(
+  const {
+    activeCycle,
+    createNewCycle,
+    interruptCurrentCycle
+  } = useContext(CyclesContext);
+
+  const newCycleForm = useForm<NewCycleFormData>({
+    resolver: zodResolver(newCycleFormSchema),
+    defaultValues: {
+      task: "",
+      minutesAmount: 0
+    }
+  });
+
+  const { handleSubmit, watch, reset } = newCycleForm;
+
+  function handleCreateNewCycle(data: NewCycleFormData) {
+    createNewCycle(data);
+    reset();
+  }
+
+  const task = watch("task");
+  const isSubmitDisabled = !task && !activeCycle;
+
+  return (
     <HomeContainer>
-        <CouterTimer>
-          <span>0</span>
-          <span>0</span>
-          <Separator>:</Separator>
-          <span>0</span>
-          <span>0</span>
-        </CouterTimer>
+      <Countdown />
 
-      <form>
+      <form onSubmit={handleSubmit(handleCreateNewCycle)}>
         <GroupForm>
-          <label htmlFor="job">
-            Tarefa:
-            <input type="text" placeholder="Tarefa" id="job"/>
-          </label>
+          <FormProvider {...newCycleForm}>
+            <NewCycleForm />
+          </FormProvider>
 
-          <label htmlFor="time" className="timer">
-            Tempo:
-            <input
-              type="number"
-              id="time"
-              placeholder="00"
-              step={5}
-              min={5}
-              max={60}
-            />
-          </label>
+          {activeCycle ? (
+              <StopButtom
+                type="button"
+                onClick={interruptCurrentCycle}
+                disabled={isSubmitDisabled}
+              >
+                Interromper
+              </StopButtom>
+            ) : (
+              <StarButtom type="submit" disabled={isSubmitDisabled}>
+                Iniciar tarefa
+              </StarButtom>
+            )}
 
-          <button>
-            Iniciar tarefa
-          </button>
         </GroupForm>
       </form>
     </HomeContainer>

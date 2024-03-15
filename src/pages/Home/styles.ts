@@ -45,24 +45,52 @@ export const HomeContainer = styled.div`
         &::placeholder {
           color: ${({ theme }) => theme["gray-500"]};
         }
+
+        &:disabled {
+          cursor: not-allowed;
+          background-color: ${({ theme }) => theme["gray-600"]};
+          color: ${({ theme }) => theme["gray-500"]};
+        }
       }
     }
+  }
+`;
 
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+export const BaseButtom = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-      height: 48px;
-      width: 200px;
-      border: none;
-      border-radius: 4px;
-      background-color: ${({ theme }) => theme["green-300"]};
+  height: 48px;
+  width: 200px;
+  border: none;
+  border-radius: 4px;
 
-      &:hover {
-        background-color: ${({ theme }) => theme["green-500"]};
-      }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${({ theme }) => theme["gray-600"]};
+    color: ${({ theme }) => theme["gray-500"]};
+
+    &:hover {
+      background-color: ${({ theme }) => theme["gray-600"]};
     }
+  }
+`;
+
+export const StarButtom = styled(BaseButtom)`
+  background-color: ${({ theme }) => theme["green-300"]};
+
+  &:hover {
+    background-color: ${({ theme }) => theme["green-500"]};
+  }
+`;
+
+export const StopButtom = styled(BaseButtom)`
+  background-color: ${({ theme }) => theme["red-500"]};
+  color: ${({ theme }) => theme.white};
+
+  &:hover {
+    background-color: ${({ theme }) => theme["red-700"]};
   }
 `;
 
