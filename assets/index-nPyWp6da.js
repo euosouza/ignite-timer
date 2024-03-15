@@ -405,4 +405,4 @@ Error generating stack: `+o.message+`
   display: flex;
   align-items:center;
   justify-content: center;
-`;function yx(){return M.jsx(mx,{children:M.jsxs(px,{children:[M.jsx(hx,{}),M.jsx(u1,{})]})})}function vx(){return M.jsx(d1,{children:M.jsxs(Go,{element:M.jsx(yx,{}),children:[M.jsx(Go,{path:"/",element:M.jsx(x_,{})}),M.jsx(Go,{path:"/history",element:M.jsx(tx,{})})]})})}function gx(){return M.jsxs(v0,{theme:P1,children:[M.jsx(N1,{}),M.jsx(w1,{children:M.jsx(Tw,{children:M.jsx(vx,{})})})]})}sl.createRoot(document.getElementById("root")).render(M.jsx(ee.StrictMode,{children:M.jsx(gx,{})}));
+`;function yx(){return M.jsx(mx,{children:M.jsxs(px,{children:[M.jsx(hx,{}),M.jsx(u1,{})]})})}function vx(){return M.jsx(d1,{children:M.jsxs(Go,{element:M.jsx(yx,{}),children:[M.jsx(Go,{path:"/",element:M.jsx(x_,{})}),M.jsx(Go,{path:"/history",element:M.jsx(tx,{})})]})})}function gx(){return M.jsxs(v0,{theme:P1,children:[M.jsx(N1,{}),M.jsx(w1,{basename:"/ignite-timer",children:M.jsx(Tw,{children:M.jsx(vx,{})})})]})}sl.createRoot(document.getElementById("root")).render(M.jsx(ee.StrictMode,{children:M.jsx(gx,{})}));
